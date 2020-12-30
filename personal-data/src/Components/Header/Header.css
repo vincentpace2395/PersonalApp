@@ -1,0 +1,32 @@
+.header {
+    height: 59px;
+    width: 100%;
+    position: fixed;
+    background: blue;
+    top: 0;
+}
+
+.header__left {
+    position: absolute;
+    margin: 5px 24px;
+}
+
+.header__main {
+    /*top: 0;*/
+    margin-right: 5%;
+    margin-left: 5%;
+    width: 90%;
+    background: blue;
+    text-align: center;
+    position: fixed;
+}
+
+button {
+    background: lightgrey;
+    width: 20%;
+    padding: 20px 20px;
+}
+
+button:hover {
+    background: dimgrey;
+}
