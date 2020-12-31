@@ -2,47 +2,29 @@ import React from 'react'
 import './Header.css';
 import MenuIcon from '@material-ui/icons/Menu';
 import {IconButton} from "@material-ui/core";
-// import { withRouter } from 'react-router-dom';
-// import history from '../../history';
+import { withRouter } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
-class Header extends React.Component {
+const Header = () => {
+    const history = useHistory();
 
-    // changeRoute = path => {
-    //     this.props.history.push(path);
-    // };
-
-    render() {
-        return (
-            <div className='header'>
-                <div className='header__left'>
-                    <IconButton>
-                        <MenuIcon/>
-                    </IconButton>
-                </div>
-
-                <div className='header__main'>
-                    <button>Home</button>
-                    <button>Finance</button>
-                    <button>Calendar</button>
-                    <button>Lifting</button>
-                    <button>Sports</button>
-                </div>
-
-
-
-
-
-                {/*<button onClick={() => this.changeRoute('/')}>Home</button>*/}
-                {/*<button onClick={() => this.changeRoute('/finance')}>Finance</button>*/}
-                {/*<button onClick={() => this.changeRoute('/calendar')}>Calendar</button>*/}
-                {/*<button onClick={() => this.changeRoute('/lifting')}>Gym</button>*/}
-                {/*<button onClick={() => this.changeRoute('/sports')}>Sports</button>*/}
-
-
-
+    return (
+        <div className='header'>
+            <div className='header__left'>
+                <IconButton>
+                    <MenuIcon/>
+                </IconButton>
             </div>
-        )
-    }
+
+            <div className='header__main'>
+                <button onClick={() => history.push('/')}>Home</button>
+                <button onClick={() => history.push('/finance')}>Finance</button>
+                <button onClick={() => history.push('/calendar')}>Calendar</button>
+                <button onClick={() => history.push('/fitness')}>Fitness</button>
+                <button onClick={() => history.push('/sports')}>Sports</button>
+            </div>
+        </div>
+    )
 };
 
 export default Header;
