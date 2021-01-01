@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counterSlice';
+import fantasyReducer from '../features/fantasySlice';
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
+    fantasy: fantasyReducer,
   },
 });

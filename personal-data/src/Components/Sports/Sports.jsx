@@ -1,15 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Sports.css';
+import {withRouter, useHistory} from 'react-router-dom';
+import Fantasy from './Fantasy/Fantasy';
+import Finance from "../Finance/Finance";
 
-class Sports extends React.Component {
 
-    render() {
-        return (
-            <div>
-                Sports Page
-            </div>
-        )
-    }
-}
+function changeRoute(path) {
+    this.setState({
+        fantasyBtnClicked: true
+    }, () => {
+        history.push(path);
+    });
+};
 
-export default Sports;
+const  Sports = () => {
+
+    const [fantasyBtnClicked, setFantasyBtnClicked] = false;
+    const [leagueBtnClicked, setLeagueBtnClicked] = false;
+
+    const history = useHistory();
+
+    return (
+        <div className='sportspage-body'>
+            <button className='fantasy-btn' onClick={() => this.changeRoute('/sports/fantasy')}>Fantasy</button>
+            { this.state.fantasyBtnClicked ? <Fantasy /> : null }
+
+            Sports Page
+        </div>
+    )
+};
+
+export default withRouter(Sports);
