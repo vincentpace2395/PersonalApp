@@ -1,0 +1,72 @@
+p4 {
+    margin-left: 10px;
+    color: green;
+    font-weight: bold;
+}
+
+.fantasy-content {
+    margin-top: 75px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.fantasy-body {
+    text-align: center;
+}
+
+.fantasy-player-input {
+    text-align: center;
+    justify-content: center;
+    margin: 15px 2px;
+}
+
+.fantasy-player-name {
+    width: 180px;
+    padding: 3px 0px;
+    margin-right: 5px;
+}
+
+.fantasy-player-stats {
+    width: 60px;
+    padding: 3px 0px;
+    margin: 0px 3px;
+}
+
+.add-player {
+    border-radius: 5px;
+    margin-bottom: 7px;
+    padding: 8px 10px;
+    max-width: 120px;
+}
+
+.save-btn {
+    border-radius: 5px;
+    margin-bottom: 3px;
+    margin-left: 15px;
+    padding: 6px 6px;
+    max-width: 80px;
+    background-color: green;
+}
+
+.delete-btn {
+    border-radius: 5px;
+    margin-bottom: 3px;
+    margin-left: 8px;
+    padding: 6px 6px;
+    max-width: 80px;
+    background-color: red;
+}
+
+.save-btn:hover {
+    cursor: pointer;
+    background-color: green;
+}
+
+.delete-btn:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.save-btn:focus {
+    box-shadow: 5px 5px;
+}

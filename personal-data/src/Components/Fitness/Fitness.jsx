@@ -5,7 +5,7 @@ class Fitness extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='fitnesspage-body'>
                 Fitness Page
             </div>
         )

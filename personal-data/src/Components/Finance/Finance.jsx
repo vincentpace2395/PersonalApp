@@ -5,7 +5,7 @@ class Finance extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='financepage-body'>
                 Finance Page
             </div>
         )
