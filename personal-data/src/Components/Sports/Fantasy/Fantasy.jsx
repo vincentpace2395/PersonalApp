@@ -5,23 +5,6 @@ import FantasyTeamTable from './FantasyTeam/FantasyTeamTable';
 import {db} from "../../../utils/firebase";
 
 class Fantasy extends React.Component {
-    player = {
-        name: '',
-        team: 0,
-        numGames: 0,
-        fgm: 0,
-        fga: 0,
-        ftm: 0,
-        fta: 0,
-        three: 0,
-        pts: 0,
-        reb: 0,
-        ast: 0,
-        stl: 0,
-        blk: 0,
-        to: 0
-    };
-
     successMessage = 'Player successfully added';
     deleteModalWarningMessage = 'Are you sure you want to delete player?';
     dangerBtnText = 'Delete';
@@ -34,38 +17,38 @@ class Fantasy extends React.Component {
         myPlayer: false,
         opposingPlayer: false,
         allFieldsDirty: false,
-        nameDirty: false,
-        numGamesDirty: false,
-        fgmDirty: false,
-        fgaDirty: false,
-        ftmDirty: false,
-        ftaDirty: false,
-        threesDirty: false,
-        ptsDirty: false,
-        rebDirty: false,
-        astDirty: false,
-        stlDirty: false,
-        blkDirty: false,
-        toDirty: false
+        name: '',
+        numGames: 0,
+        fgm: 0,
+        fga: 0,
+        ftm: 0,
+        fta: 0,
+        threes: 0,
+        pts: 0,
+        reb: 0,
+        ast: 0,
+        stl: 0,
+        blk: 0,
+        turnover: 0
     };
 
     savePlayer = () => {
-        db.collection('fantasy-players').add({
-            player: this.player.name,
-            team: this.player.team,
-            games: this.player.numGames,
-            fga: this.player.fga,
-            fgm: this.player.fgm,
-            fta: this.player.fta,
-            ftm: this.player.ftm,
-            three: this.player.three,
-            pts: this.player.pts,
-            reb: this.player.reb,
-            ast: this.player.ast,
-            stl: this.player.stl,
-            blk: this.player.blk,
-            to: this.player.to
-        });
+        // db.collection('fantasy-players').add({
+        //     player: this.formData.name,
+        //     team: this.formData.team,
+        //     games: this.formData.numGames,
+        //     fga: this.formData.fga,
+        //     fgm: this.formData.fgm,
+        //     fta: this.formData.fta,
+        //     ftm: this.formData.ftm,
+        //     three: this.formData.three,
+        //     pts: this.formData.pts,
+        //     reb: this.formData.reb,
+        //     ast: this.formData.ast,
+        //     stl: this.formData.stl,
+        //     blk: this.formData.blk,
+        //     to: this.formData.to
+        // });
 
         this.setState({
             saveBtnClicked: true,
@@ -73,7 +56,20 @@ class Fantasy extends React.Component {
             myPlayer: false,
             opposingPlayer: false
         }, () => {
-            console.log('Player saved')
+            console.log('Player saved');
+            console.log('Name: ' + this.state.name);
+            console.log('Num Games: ' + this.state.numGames);
+            console.log('3s: ' + this.state.threes);
+            console.log('Points: ' + this.state.pts);
+            console.log('Rebounds: ' + this.state.reb);
+            console.log('Assists: ' + this.state.ast);
+            console.log('Steals: ' + this.state.stl);
+            console.log('Blocks: ' + this.state.blk);
+            console.log('Turnovers: ' + this.state.turnover);
+            console.log('FGM: ' + this.state.fgm);
+            console.log('FGA: ' + this.state.fga);
+            console.log('FTM: ' + this.state.ftm);
+            console.log('FTA: ' + this.state.fta);
         })
     };
 
@@ -121,6 +117,84 @@ class Fantasy extends React.Component {
         })
     };
 
+    onChangeName = event => {
+        this.setState({
+            name: event.target.value
+        })
+    };
+
+    onChangeNumGames = event => {
+        this.setState({
+            numGames: event.target.value
+        })
+    };
+
+    onChangeFgm = event => {
+        this.setState({
+            fgm: event.target.value
+        })
+    };
+
+    onChangeFga = event => {
+        this.setState({
+            fga: event.target.value
+        })
+    };
+
+    onChangeFtm = event => {
+        this.setState({
+            ftm: event.target.value
+        })
+    };
+
+    onChangeFta = event => {
+        this.setState({
+            fta: event.target.value
+        })
+    };
+
+    onChangeThree = event => {
+        this.setState({
+            threes: event.target.value
+        })
+    };
+
+    onChangePts = event => {
+        this.setState({
+            pts: event.target.value
+        })
+    };
+
+    onChangeReb = event => {
+        this.setState({
+            reb: event.target.value
+        })
+    };
+
+    onChangeAst = event => {
+        this.setState({
+            ast: event.target.value
+        })
+    };
+
+    onChangeStl = event => {
+        this.setState({
+            stl: event.target.value
+        })
+    };
+
+    onChangeBlk = event => {
+        this.setState({
+            blk: event.target.value
+        })
+    };
+
+    onChangeTurnover = event => {
+        this.setState({
+            turnover: event.target.value
+        })
+    };
+
     render() {
         return (
             <div className='fantasy-content'>
@@ -135,22 +209,22 @@ class Fantasy extends React.Component {
                     disabled={this.state.addPlayerBtnClicked}>Add Opposing TeamPlayer</button>
                 <div className='fantasy-body'>
                     <form>
-                        { this.state.addPlayerBtnClicked && <input placeholder='Name' className='fantasy-player-input fantasy-player-name' /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='Name' className='fantasy-player-input fantasy-player-name' onChange={event => this.onChangeName(event)} /> }
                         { (this.state.addPlayerBtnClicked && this.state.myPlayer) && <input disabled value='1' className='fantasy-player-team fantasy-player-stats' /> }
                         { (this.state.addPlayerBtnClicked && this.state.opposingPlayer) && <input disabled value='2' className='fantasy-player-team fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='# Games' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='FGA' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='FGM' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='FTA' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='FTM' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='3PM' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='PTS' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='REB' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='AST' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='STL' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='BLK' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <input placeholder='TO' className='fantasy-player-input fantasy-player-stats' /> }
-                        { this.state.addPlayerBtnClicked && <button className='save-btn' disabled={!this.state.allFieldsDirty} onClick={() => this.savePlayer()}>Save</button> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='# Games' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeNumGames(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='FGA' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeFga(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='FGM' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeFgm(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='FTA' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeFta(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='FTM' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeFtm(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='3PM' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeThree(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='PTS' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangePts(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='REB' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeReb(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='AST' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeAst(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='STL' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeStl(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='BLK' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeBlk(event)} /> }
+                        { this.state.addPlayerBtnClicked && <input placeholder='TO' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeTurnover(event)} /> }
+                        { this.state.addPlayerBtnClicked && <button className='save-btn' disabled={this.state.allFieldsDirty} onClick={() => this.savePlayer()}>Save</button> }
                         { this.state.addPlayerBtnClicked && <button className='delete-btn' onClick={() => this.deletePlayer()}>Delete</button> }
                         { (!this.state.addPlayerBtnClicked && this.state.saveBtnClicked) && <p4>{this.successMessage}</p4> }
                         { this.state.deleteBtnClicked &&
