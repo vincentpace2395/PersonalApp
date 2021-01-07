@@ -17,19 +17,32 @@ class Fantasy extends React.Component {
         myPlayer: false,
         opposingPlayer: false,
         allFieldsDirty: false,
-        name: '',
-        numGames: 0,
-        fgm: 0,
-        fga: 0,
-        ftm: 0,
-        fta: 0,
-        threes: 0,
-        pts: 0,
-        reb: 0,
-        ast: 0,
-        stl: 0,
-        blk: 0,
-        turnover: 0
+        // nameDirty: false,
+        // numGamesDirty: false,
+        // fgmDirty: false,
+        // fgaDirty: false,
+        // ftmDirty: false,
+        // ftaDirty: false,
+        // threesDirty: false,
+        // ptsDirty: false,
+        // rebDirty: false,
+        // astDirty: false,
+        // stlDirty: false,
+        // blkDirty: false,
+        // toDirty: false,
+        name: null,
+        numGames: null,
+        fgm: null,
+        fga: null,
+        ftm: null,
+        fta: null,
+        threes: null,
+        pts: null,
+        reb: null,
+        ast: null,
+        stl: null,
+        blk: null,
+        turnover: null
     };
 
     savePlayer = () => {
@@ -54,7 +67,22 @@ class Fantasy extends React.Component {
             saveBtnClicked: true,
             addPlayerBtnClicked: false,
             myPlayer: false,
-            opposingPlayer: false
+            opposingPlayer: false,
+            allFieldsDirty: false,
+            name: null,
+            numGames: null,
+            fgm: null,
+            fga: null,
+            ftm: null,
+            fta: null,
+            threes: null,
+            pts: null,
+            reb: null,
+            ast: null,
+            stl: null,
+            blk: null,
+            turnover: null
+
         }, () => {
             console.log('Player saved');
             console.log('Name: ' + this.state.name);
@@ -192,7 +220,23 @@ class Fantasy extends React.Component {
     onChangeTurnover = event => {
         this.setState({
             turnover: event.target.value
+
         })
+    };
+
+    setAllFieldsDirtyState = () => {
+        this.setState({
+            allFieldsDirty: true
+        })
+    };
+
+    checkAllFieldsDirty = () => {
+        if (this.state.name !== null && this.state.numGames !== null && this.state.threes !== null && this.state.pts !== null &&
+            this.state.reb !== null && this.state.ast !== null && this.state.stl !== null && this.state.blk !== null &&
+            this.state.turnover !== null && this.state.fgm !== null && this.state.fga !== null && this.state.ftm !== null && this.state.fta !== null) {
+            return true;
+        }
+        return false;
     };
 
     render() {
@@ -209,6 +253,7 @@ class Fantasy extends React.Component {
                     disabled={this.state.addPlayerBtnClicked}>Add Opposing TeamPlayer</button>
                 <div className='fantasy-body'>
                     <form>
+                        { this.checkAllFieldsDirty() && this.setAllFieldsDirtyState() }
                         { this.state.addPlayerBtnClicked && <input placeholder='Name' className='fantasy-player-input fantasy-player-name' onChange={event => this.onChangeName(event)} /> }
                         { (this.state.addPlayerBtnClicked && this.state.myPlayer) && <input disabled value='1' className='fantasy-player-team fantasy-player-stats' /> }
                         { (this.state.addPlayerBtnClicked && this.state.opposingPlayer) && <input disabled value='2' className='fantasy-player-team fantasy-player-stats' /> }
@@ -224,7 +269,7 @@ class Fantasy extends React.Component {
                         { this.state.addPlayerBtnClicked && <input placeholder='STL' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeStl(event)} /> }
                         { this.state.addPlayerBtnClicked && <input placeholder='BLK' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeBlk(event)} /> }
                         { this.state.addPlayerBtnClicked && <input placeholder='TO' className='fantasy-player-input fantasy-player-stats' onChange={event => this.onChangeTurnover(event)} /> }
-                        { this.state.addPlayerBtnClicked && <button className='save-btn' disabled={this.state.allFieldsDirty} onClick={() => this.savePlayer()}>Save</button> }
+                        { this.state.addPlayerBtnClicked && <button className='save-btn' disabled={!this.state.allFieldsDirty} onClick={() => this.savePlayer()}>Save</button> }
                         { this.state.addPlayerBtnClicked && <button className='delete-btn' onClick={() => this.deletePlayer()}>Delete</button> }
                         { (!this.state.addPlayerBtnClicked && this.state.saveBtnClicked) && <p4>{this.successMessage}</p4> }
                         { this.state.deleteBtnClicked &&

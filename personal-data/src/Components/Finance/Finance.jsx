@@ -1,26 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Finance.css';
 import {withRouter, useHistory} from 'react-router-dom';
-import {showFantasy} from "../../features/fantasySlice";
+import { selectViewFinanceIsOpen, showFinance } from "../../features/financeSlice";
+import { selectViewDebtIsOpen, showDebt } from "../../features/debtSlice";
+import { selectViewInvestmentIsOpen, showInvestment } from "../../features/investmentSlice";
+import {useSelector} from "react-redux";
+
 
 function Finance() {
-
+    const viewFinanceIsOpen = useSelector(selectViewFinanceIsOpen);
+    const viewDebtIsOpen = useSelector(selectViewDebtIsOpen);
+    const viewInvestmentIsOpen = useSelector(selectViewInvestmentIsOpen);
+    const dispatch = useDispatch();
     const history = useHistory();
+
+    const [financeBtnClicked, setFinanceBtnClicked] = useState(false);
+    const [investmentBtnClicked, setInvestmentBtnClicked] = useState(false);
+    const [debtBtnClicked, setDebtBtnClicked] = useState(false);
+
 
     function updateOverviewBtnState(path) {
         dispatch(showFantasy());
-        setFantasyBtnClicked(true);
+        setFinanceBtnClicked(true);
         history.push(path);
     };
 
     function updateDebtBtnState(path) {
-        setLeagueBtnClicked(true);
+        setDebtBtnClicked(true);
         history.push(path);
     };
 
     function updateInvestmentsBtnState(path) {
         dispatch(showFantasy());
-        setFantasyBtnClicked(true);
+        setInvestmentBtnClicked(true);
         history.push(path);
     };
 
