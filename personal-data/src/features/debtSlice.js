@@ -17,6 +17,6 @@ export const debtSlice = createSlice({
 
 export const { showDebt, hideDebt } = debtSlice.actions;
 
-export const selectViewDebtIsOpen = state => state.debt.viewDebtIsOpen;
+export const selectViewDebtIsOpen = state => state.debts.viewDebtIsOpen;
 
 export default debtSlice.reducer;

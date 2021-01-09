@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Finance.css';
-import {withRouter, useHistory} from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { selectViewFinanceIsOpen, showFinance } from "../../features/financeSlice";
 import { selectViewDebtIsOpen, showDebt } from "../../features/debtSlice";
 import { selectViewInvestmentIsOpen, showInvestment } from "../../features/investmentSlice";
-import {useSelector} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 
 function Finance() {
@@ -20,7 +20,7 @@ function Finance() {
 
 
     function updateOverviewBtnState(path) {
-        dispatch(showFantasy());
+        // dispatch(showFantasy());
         setFinanceBtnClicked(true);
         history.push(path);
     };
@@ -31,7 +31,7 @@ function Finance() {
     };
 
     function updateInvestmentsBtnState(path) {
-        dispatch(showFantasy());
+        // dispatch(showFantasy());
         setInvestmentBtnClicked(true);
         history.push(path);
     };

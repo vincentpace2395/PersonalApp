@@ -17,6 +17,6 @@ export const investmentSlice = createSlice({
 
 export const { showInvestment, hideInvestment } = investmentSlice.actions;
 
-export const selectViewInvestmentIsOpen = state => state.investment.viewInvestmentIsOpen;
+export const selectViewInvestmentIsOpen = state => state.investments.viewInvestmentIsOpen;
 
 export default investmentSlice.reducer;

@@ -17,6 +17,6 @@ export const financeSlice = createSlice({
 
 export const { showFinance, hideFinance } = financeSlice.actions;
 
-export const selectViewFinanceIsOpen = state => state.finance.viewFinanceIsOpen;
+export const selectViewFinanceIsOpen = state => state.financeOverview.viewFinanceIsOpen;
 
 export default financeSlice.reducer;

@@ -17,19 +17,19 @@ class Fantasy extends React.Component {
         myPlayer: false,
         opposingPlayer: false,
         allFieldsDirty: false,
-        // nameDirty: false,
-        // numGamesDirty: false,
-        // fgmDirty: false,
-        // fgaDirty: false,
-        // ftmDirty: false,
-        // ftaDirty: false,
-        // threesDirty: false,
-        // ptsDirty: false,
-        // rebDirty: false,
-        // astDirty: false,
-        // stlDirty: false,
-        // blkDirty: false,
-        // toDirty: false,
+        nameDirty: false,
+        numGamesDirty: false,
+        fgmDirty: false,
+        fgaDirty: false,
+        ftmDirty: false,
+        ftaDirty: false,
+        threesDirty: false,
+        ptsDirty: false,
+        rebDirty: false,
+        astDirty: false,
+        stlDirty: false,
+        blkDirty: false,
+        toDirty: false,
         name: null,
         numGames: null,
         fgm: null,
@@ -147,96 +147,144 @@ class Fantasy extends React.Component {
 
     onChangeName = event => {
         this.setState({
-            name: event.target.value
+            name: event.target.value,
+            nameDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('NamesDirty is ' + this.state.nameDirty);
         })
     };
 
     onChangeNumGames = event => {
         this.setState({
-            numGames: event.target.value
+            numGames: event.target.value,
+            numGamesDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('NumGamesDirty is ' + this.state.numGamesDirty);
         })
     };
 
     onChangeFgm = event => {
         this.setState({
-            fgm: event.target.value
+            fgm: event.target.value,
+            fgmDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('FGMDirty is ' + this.state.fgmDirty);
         })
     };
 
     onChangeFga = event => {
         this.setState({
-            fga: event.target.value
+            fga: event.target.value,
+            fgaDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('FGADirty is ' + this.state.fgaDirty);
         })
     };
 
     onChangeFtm = event => {
         this.setState({
-            ftm: event.target.value
+            ftm: event.target.value,
+            ftmDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('FTMDirty is ' + this.state.ftmDirty);
         })
     };
 
     onChangeFta = event => {
         this.setState({
-            fta: event.target.value
+            fta: event.target.value,
+            ftaDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('FTADirty is ' + this.state.ftaDirty);
         })
     };
 
     onChangeThree = event => {
         this.setState({
-            threes: event.target.value
+            threes: event.target.value,
+            threesDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('ThreesDirty is ' + this.state.threesDirty);
         })
     };
 
     onChangePts = event => {
         this.setState({
-            pts: event.target.value
+            pts: event.target.value,
+            ptsDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('PtsDirty is ' + this.state.ptsDirty);
         })
     };
 
     onChangeReb = event => {
         this.setState({
-            reb: event.target.value
+            reb: event.target.value,
+            rebDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('RebDirty is ' + this.state.rebDirty);
         })
     };
 
     onChangeAst = event => {
         this.setState({
-            ast: event.target.value
+            ast: event.target.value,
+            astDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('AstDirty is ' + this.state.astDirty);
         })
     };
 
     onChangeStl = event => {
         this.setState({
-            stl: event.target.value
+            stl: event.target.value,
+            stlDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('StlDirty is ' + this.state.stlDirty);
         })
     };
 
     onChangeBlk = event => {
         this.setState({
-            blk: event.target.value
+            blk: event.target.value,
+            blkDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('BlkDirty is ' + this.state.blkDirty);
         })
     };
 
     onChangeTurnover = event => {
         this.setState({
-            turnover: event.target.value
-
+            turnover: event.target.value,
+            toDirty: true
+        }, () => {
+            this.updateAllFieldsDirtyState();
+            console.log('ToDirty is ' + this.state.toDirty);
         })
     };
 
-    setAllFieldsDirtyState = () => {
-        this.setState({
-            allFieldsDirty: true
-        })
-    };
-
-    checkAllFieldsDirty = () => {
-        if (this.state.name !== null && this.state.numGames !== null && this.state.threes !== null && this.state.pts !== null &&
-            this.state.reb !== null && this.state.ast !== null && this.state.stl !== null && this.state.blk !== null &&
-            this.state.turnover !== null && this.state.fgm !== null && this.state.fga !== null && this.state.ftm !== null && this.state.fta !== null) {
-            return true;
+    updateAllFieldsDirtyState = () => {
+        if (this.state.nameDirty && this.state.numGamesDirty && this.state.threesDirty && this.state.ptsDirty &&
+            this.state.rebDirty && this.state.astDirty && this.state.stlDirty && this.state.blkDirty &&
+            this.state.toDirty && this.state.fgmDirty && this.state.fgaDirty && this.state.ftmDirty && this.state.ftaDirty) {
+            this.setState({
+                allFieldsDirty: true
+            }, () => {
+                console.log('All fields dirty is ' + this.state.allFieldsDirty);
+            })
         }
-        return false;
     };
 
     render() {
@@ -253,7 +301,6 @@ class Fantasy extends React.Component {
                     disabled={this.state.addPlayerBtnClicked}>Add Opposing TeamPlayer</button>
                 <div className='fantasy-body'>
                     <form>
-                        { this.checkAllFieldsDirty() && this.setAllFieldsDirtyState() }
                         { this.state.addPlayerBtnClicked && <input placeholder='Name' className='fantasy-player-input fantasy-player-name' onChange={event => this.onChangeName(event)} /> }
                         { (this.state.addPlayerBtnClicked && this.state.myPlayer) && <input disabled value='1' className='fantasy-player-team fantasy-player-stats' /> }
                         { (this.state.addPlayerBtnClicked && this.state.opposingPlayer) && <input disabled value='2' className='fantasy-player-team fantasy-player-stats' /> }
