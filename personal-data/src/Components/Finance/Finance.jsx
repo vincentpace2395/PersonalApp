@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './Finance.css';
+import Portfolio from './Portfolio/Portfolio';
+import Debts from './Debts/Debts';
+import Investments from './Investments/Investments';
 import { withRouter, useHistory } from 'react-router-dom';
 import { selectViewFinanceIsOpen, showFinance } from "../../features/financeSlice";
 import { selectViewDebtIsOpen, showDebt } from "../../features/debtSlice";
@@ -19,9 +22,10 @@ function Finance() {
     const [debtBtnClicked, setDebtBtnClicked] = useState(false);
 
 
-    function updateOverviewBtnState(path) {
+    function updatePortfolioBtnState(path) {
         // dispatch(showFantasy());
         setFinanceBtnClicked(true);
+        console.log(financeBtnClicked);
         history.push(path);
     };
 
@@ -38,9 +42,12 @@ function Finance() {
 
     return (
         <div className='financepage-body'>
-            <button className='btn' onClick={() => updateOverviewBtnState('/finance/fantasy')}>Overview</button>
-            <button className='btn' onClick={() => updateDebtBtnState('/finance/league')}>Debts</button>
-            <button className='btn' onClick={() => updateInvestmentsBtnState('/finance/league')}>Investments</button>
+            { financeBtnClicked && <Portfolio /> }
+            { debtBtnClicked && <Debts /> }
+            { investmentBtnClicked && <Investments /> }
+            <button className='btn' onClick={() => updatePortfolioBtnState('/finance/portfolio')}>Portfolio</button>
+            <button className='btn' onClick={() => updateDebtBtnState('/finance/debts')}>Debts</button>
+            <button className='btn' onClick={() => updateInvestmentsBtnState('/finance/investments')}>Investments</button>
         </div>
     )
 }
